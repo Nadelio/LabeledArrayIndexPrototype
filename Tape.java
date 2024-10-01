@@ -16,6 +16,12 @@ public class Tape {
     private HashMap<String, Integer> labels = new HashMap<String, Integer>();
 
     /**
+     * The pointer that the program will use to access the tape.<br></br>
+     * { position, value }
+     */
+    private static int[] pointer = new int[]{ 0, 0 }; // position, value
+
+    /**
      * Initializes the tape with zeros.
      */
     public void initializeTape() {
@@ -66,5 +72,28 @@ public class Tape {
             }
         }
         return null;
+    }
+
+    /**
+     * @return The current pointer position.
+     */
+    public int getPointer(){ return pointer[0]; }
+    
+    /**
+     * Sets the pointer to a new position and updates the value of the pointer.
+     * @param destination The position to move the pointer to.
+     */
+    public void setPointer(int destination){
+        pointer[0] = destination;
+        pointer[1] = tape[destination];
+    }
+
+    /**
+     * @return The value of the pointer.
+     */
+    public int getPointerValue(){ return pointer[1]; }
+
+    public HashMap<String, Integer> getLabels() {
+        return labels;
     }
 }
